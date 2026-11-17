@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import MenuSection from '../components/MenuSection';
 
 interface LocationState {
   scrollTo?: string;
@@ -77,18 +78,17 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section 
-        id="menu" 
-        className="min-h-screen flex items-center justify-center bg-slate-800/30 border-b border-slate-800"
-      >
-        <h2 className="text-3xl font-bold tracking-wide">Menu Section</h2>
-      </section>
+      <MenuSection />
 
       <section 
         id="order" 
-        className="scroll-mt-24 min-h-[70vh] flex items-center justify-center"
+        aria-labelledby="order-heading"
+        className="scroll-mt-24 min-h-[70vh] flex items-center justify-center bg-[#fffaf4] px-6 py-16 text-[#49352e] sm:py-20 lg:px-8"
       >
-        <h2 className="text-3xl font-bold tracking-wide">Order Section</h2>
+        <div className="mx-auto w-full max-w-7xl text-center">
+          <h2 id="order-heading" className="font-serif text-4xl sm:text-5xl">Order Section</h2>
+          <div aria-hidden="true" className="mx-auto mt-5 h-1 w-16 rounded-full bg-light-purple" />
+        </div>
       </section>
     </main>
   );

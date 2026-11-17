@@ -8,3 +8,66 @@
     --color-pink: #FFB8BF;
     --color-brown: #AB7C6A;
 }
+
+.menu-track {
+    padding-inline: 2rem;
+    scroll-padding-inline: 2rem;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent);
+}
+
+.menu-arrow {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.menu-carousel:hover .menu-arrow,
+.menu-carousel:focus-within .menu-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-track::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-card {
+    perspective: 1200px;
+}
+
+.menu-card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 550ms ease;
+}
+
+.menu-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.menu-card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 4px 12px #49352e12;
+}
+
+.menu-card-back {
+    transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-card-inner {
+        transition: none;
+    }
+    .menu-arrow {
+        transition: none;
+    }
+}
