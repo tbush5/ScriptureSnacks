@@ -5,7 +5,7 @@ export const menuItems: MenuCardProps[] = [
   {
     name: 'Cinnamon Rolls',
     image: '/food/cinnamon-rolls.jpg',
-    description: 'A cozy cinnamon treat for a sweet start to your day or a little afternoon pick-me-up.',
+    description: 'Who doesn\'t love a cinnamon roll? These are my sweet as honey cinnamon rolls, and they\'ll keep you rolling back.',
     color: '#e4c6eb',
   },
   {
@@ -17,25 +17,26 @@ export const menuItems: MenuCardProps[] = [
   {
     name: 'Chocolate Chip Cookies',
     image: '/food/chocolate-chip-cookies.jpg',
-    description: 'A classic chocolate chip treat, perfect for a cookie break or sharing around the table.',
-    color: '#ffb8bf',
+    description: 'A classic chocolate chip cookie made from a browned butter base and semi-sweet chocolate chunks.',
+    color: '#ffb8bf'
+
   },
   {
     name: 'Apple Pie',
     image: '/food/apple-pie-menu-gallery.jpg',
-    description: 'A comforting apple pie made for gathering together and sharing something sweet.',
+    description: 'A comforting apple pie made to share something sweet with loved ones. It is loaded with apples, cinnamon, sugar, and just a touch of lemon all inside a flaky crust.',
     color: '#f7dc6f',
   },
   {
     name: 'Pumpkin Muffins',
     image: '/food/pumpkin-muffin-menu.jpg',
-    description: 'A little pumpkin sweetness to enjoy with your morning coffee or as an afternoon treat.',
+    description: 'Similar to the pumpkin bread, these muffins are perfect for a morning breakfast. They have both pepitas and a streusel topping.',
     color: '#e4c6eb',
   },
   {
     name: 'Pumpkin Bread',
     image: '/food/pumpkin-bread.jpg',
-    description: 'A cozy pumpkin loaf for slicing, sharing, and savoring a little sweetness together.',
+    description: 'This bread is packed with pumpkin and has a moist interior. I like to finish it off with pepitas for a little added texture and flavor.',
     color: '#a2d9ce',
   },
   {
