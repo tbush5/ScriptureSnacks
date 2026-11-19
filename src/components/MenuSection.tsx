@@ -137,7 +137,7 @@ export default function MenuSection() {
       <div className="mx-auto mb-8 max-w-7xl">
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#82558a]">Something sweet for you</p>
-          <h2 id="menu-heading" className="font-serif text-4xl sm:text-5xl">Our menu</h2>
+          <h2 id="menu-heading" className="font-serif text-4xl sm:text-5xl">My Menu</h2>
         </div>
       </div>
       <div

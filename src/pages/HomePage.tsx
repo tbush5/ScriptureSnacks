@@ -32,15 +32,14 @@ export const HomePage = () => {
               Welcome to Scripture Snacks
             </p>
             <h1 id="story-heading" className="font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              Every sweet treat has a story.
+              Every Snack has a Story
             </h1>
             <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-light-purple" />
           </header>
           <figure className="relative order-2 w-full max-w-lg justify-self-start md:justify-self-end">
-            {/* Replace this placeholder photo with her own photo when ready. */}
             <img
-              src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=85"
-              alt="A batch of chocolate chip cookies ready to share"
+              src="/food/fall-collage-gallery.jpg"
+              alt="A fall collage of Scripture Snacks baked goods"
               width={1200}
               height={1500}
               className="aspect-[4/5] w-full rounded-t-full rounded-b-3xl object-cover shadow-lg"
@@ -52,20 +51,13 @@ export const HomePage = () => {
           </figure>
 
           <div className="order-1 lg:py-8">
-            <h2 className="mb-4 font-serif text-2xl">The heart behind the baking</h2>
-            {/* Replace these paragraphs with her story. */}
+            <h2 className="mb-4 font-serif text-2xl">Here is the story</h2>
             <div className="space-y-5 text-base leading-8 text-[#6d5950] sm:text-lg">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                vitae justo eget magna fermentum iaculis. Sed ut perspiciatis unde
-                omnis iste natus error sit voluptatem, a little beginning filled
-                with love and something sweet.
-              </p>
-              <p>
-                Donec ullamcorper nulla non metus auctor fringilla. Maecenas
-                faucibus mollis interdum. Praesent commodo cursus magna, vel
-                scelerisque nisl consectetur et. Aenean lacinia bibendum nulla
-                sed consectetur.
+                Hello, I am Katie, and I started Scripture Snacks in a daydream. No, actually!
+                I was on a plane in the sky while daydreaming about baking. I dreamt of a bakery
+                where I worked to serve the Lord our God and serve his people. In this day of age eveyone seems busy,
+                so please sit back and take a snack.
               </p>
             </div>
             <a

@@ -1,42 +1,48 @@
 import type { MenuCardProps } from '../components/MenuCard';
 
-// Sample menu: replace these names, descriptions, and photos with her own.
+// Add or edit menu items here. Descriptions can be updated with recipe details.
 export const menuItems: MenuCardProps[] = [
   {
-    name: 'Chocolate Chip Cookies',
-    image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80',
-    description: 'Golden edges, a soft center, and plenty of chocolate chips. A comforting little treat made for sharing—or saving for yourself.',
+    name: 'Cinnamon Rolls',
+    image: '/food/cinnamon-rolls.jpg',
+    description: 'A cozy cinnamon treat for a sweet start to your day or a little afternoon pick-me-up.',
     color: '#e4c6eb',
   },
   {
-    name: 'Fudge Brownies',
-    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80',
-    description: 'Rich chocolate brownies with a fudgy middle and a delicate, crackly top. A little square of sweetness for chocolate lovers.',
+    name: 'Cosmic Collagen Bites',
+    image: '/food/cosmic-collagen-bites.jpg',
+    description: 'A little bite of sweetness to brighten your day. Enjoy one as a snack or share a few with someone you love.',
     color: '#a2d9ce',
   },
   {
-    name: 'Vanilla Cupcakes',
-    image: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=700&q=80',
-    description: 'Fluffy vanilla cupcakes topped with a generous swirl of creamy frosting. A cheerful addition to celebrations big and small.',
+    name: 'Chocolate Chip Cookies',
+    image: '/food/chocolate-chip-cookies.jpg',
+    description: 'A classic chocolate chip treat, perfect for a cookie break or sharing around the table.',
     color: '#ffb8bf',
   },
   {
-    name: 'Cinnamon Rolls',
-    image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=700&q=80',
-    description: 'Soft spirals of dough filled with cinnamon sugar and finished with a sweet glaze. Cozy, comforting, and lovely with a cup of coffee.',
+    name: 'Apple Pie',
+    image: '/food/apple-pie-menu-gallery.jpg',
+    description: 'A comforting apple pie made for gathering together and sharing something sweet.',
     color: '#f7dc6f',
   },
   {
-    name: 'Berry Cheesecake',
-    image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80',
-    description: 'Smooth, creamy cheesecake on a buttery crumb crust, finished with berries for a bright and sweet bite.',
+    name: 'Pumpkin Muffins',
+    image: '/food/pumpkin-muffin-menu.jpg',
+    description: 'A little pumpkin sweetness to enjoy with your morning coffee or as an afternoon treat.',
     color: '#e4c6eb',
   },
   {
-    name: 'Chocolate Cake',
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80',
-    description: 'Tender layers of chocolate cake with silky chocolate frosting. A classic centerpiece for gathering around the table.',
+    name: 'Pumpkin Bread',
+    image: '/food/pumpkin-bread.jpg',
+    description: 'A cozy pumpkin loaf for slicing, sharing, and savoring a little sweetness together.',
     color: '#a2d9ce',
+  },
+  {
+    name: 'Apple Fritter Cookies',
+    image: '/food/apple-fritter-cookie.jpg',
+    description: 'Apple fritter inspiration in a cookie-sized treat. A sweet little addition to your day.',
+    color: '#ffb8bf',
   },
 ];
 
