@@ -70,7 +70,20 @@
     transform: rotateY(180deg);
 }
 
+[data-gallery-fades] .gallery-photo {
+    opacity: 0;
+    transition: opacity 450ms ease;
+}
+
+[data-gallery-fades] .gallery-photo[data-visible="true"] {
+    opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
+    [data-gallery-fades] .gallery-photo {
+        opacity: 1;
+        transition: none;
+    }
     .menu-card-inner {
         transition: none;
     }

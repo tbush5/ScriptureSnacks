@@ -7,6 +7,8 @@ export function useMenuCarousel(itemCount: number) {
   const controller = useRef<MenuCarouselController | null>(null);
   const [centeredItem, setCenteredItem] = useState(0);
   const [controlsVisible, setControlsVisible] = useState(false);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(() => new Set());
+  const flippedCardsRef = useRef<Set<number>>(new Set());
   const controlsTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tapStart = useRef<{ x: number; y: number } | null>(null);
 
@@ -15,10 +17,19 @@ export function useMenuCarousel(itemCount: number) {
     if (!element || !itemCount) return;
     const mobile = window.matchMedia('(max-width: 767px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const closeMobileDescriptions = () => {
+      if (!mobile.matches || flippedCardsRef.current.size === 0) return;
+      flippedCardsRef.current = new Set();
+      setFlippedCards(flippedCardsRef.current);
+      instance.setDescriptionOpen(false, performance.now());
+    };
     const instance = new MenuCarouselController(itemCount, {
       read: () => element.scrollLeft,
       write: position => { element.scrollLeft = position; },
-      onCenteredItem: setCenteredItem,
+      onCenteredItem: index => {
+        setCenteredItem(index);
+        if ([...flippedCardsRef.current].some(card => card % itemCount !== index)) closeMobileDescriptions();
+      },
     });
     controller.current = instance;
 
@@ -26,6 +37,7 @@ export function useMenuCarousel(itemCount: number) {
       const first = element.children[0] as HTMLElement;
       const nextCopy = element.children[itemCount] as HTMLElement;
       const loopWidth = nextCopy.offsetLeft - first.offsetLeft;
+      if (instance.isMobile !== mobile.matches) closeMobileDescriptions();
       instance.configure({
         viewport: element.clientWidth,
         firstCenter: first.offsetLeft + first.offsetWidth / 2,
@@ -37,9 +49,17 @@ export function useMenuCarousel(itemCount: number) {
     const onScrollEnd = () => instance.onScrollEnd(performance.now());
     const onVisibility = () => instance.setVisible(!document.hidden, performance.now());
     const resize = new ResizeObserver(measure);
+    const visibility = new IntersectionObserver(entries => {
+      const openCard = [...flippedCardsRef.current][0];
+      if (openCard === undefined) return;
+      if (entries.some(entry => entry.target === element.children[openCard] && !entry.isIntersecting)) {
+        closeMobileDescriptions();
+      }
+    });
     measure();
     onVisibility();
     resize.observe(element);
+    for (const card of element.children) visibility.observe(card);
     mobile.addEventListener('change', measure);
     reducedMotion.addEventListener('change', measure);
     element.addEventListener('scroll', onScroll, { passive: true });
@@ -55,6 +75,7 @@ export function useMenuCarousel(itemCount: number) {
     return () => {
       cancelAnimationFrame(frame);
       resize.disconnect();
+      visibility.disconnect();
       mobile.removeEventListener('change', measure);
       reducedMotion.removeEventListener('change', measure);
       element.removeEventListener('scroll', onScroll);
@@ -64,6 +85,23 @@ export function useMenuCarousel(itemCount: number) {
       controller.current = null;
     };
   }, [itemCount]);
+
+  const setCardFlipped = (cardIndex: number, flipped: boolean) => {
+    const instance = controller.current;
+    const next = instance?.isMobile ? new Set<number>() : new Set(flippedCardsRef.current);
+    if (flipped) next.add(cardIndex);
+    else next.delete(cardIndex);
+    flippedCardsRef.current = next;
+    setFlippedCards(next);
+    instance?.setDescriptionOpen(instance.isMobile && next.size > 0, performance.now());
+  };
+
+  const closeDescriptionForNavigation = () => {
+    if (!controller.current?.isMobile || flippedCardsRef.current.size === 0) return;
+    flippedCardsRef.current = new Set();
+    setFlippedCards(flippedCardsRef.current);
+    controller.current.setDescriptionOpen(false, performance.now());
+  };
 
   const focusProps = {
     onFocus: (event: FocusEvent<HTMLElement>) => {
@@ -105,6 +143,8 @@ export function useMenuCarousel(itemCount: number) {
     track,
     centeredItem,
     controlsVisible,
+    flippedCards,
+    setCardFlipped,
     carouselProps,
     dotsProps: {
       ...focusProps,
@@ -112,7 +152,13 @@ export function useMenuCarousel(itemCount: number) {
       onMouseEnter: () => controller.current?.setHover(0.5),
       onMouseLeave: () => controller.current?.setHover(null),
     },
-    scroll: (direction: -1 | 1) => controller.current?.move(direction, performance.now()),
-    scrollToItem: (index: number) => controller.current?.goToItem(index, performance.now()),
+    scroll: (direction: -1 | 1) => {
+      closeDescriptionForNavigation();
+      controller.current?.move(direction, performance.now());
+    },
+    scrollToItem: (index: number) => {
+      closeDescriptionForNavigation();
+      controller.current?.goToItem(index, performance.now());
+    },
   };
 }

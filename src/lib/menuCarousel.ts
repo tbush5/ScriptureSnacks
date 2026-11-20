@@ -34,6 +34,7 @@ export class MenuCarouselController {
   private reducedMotion = false;
   private visible = true;
   private keyboardFocus = false;
+  private descriptionOpen = false;
   private direction = 1;
   private position = 0;
   private lastWritten = 0;
@@ -152,6 +153,15 @@ export class MenuCarouselController {
     this.nextAdvance = now + MOBILE_INTERVAL;
   }
 
+  setDescriptionOpen(open: boolean, now: number) {
+    this.descriptionOpen = open;
+    this.nextAdvance = now + MOBILE_INTERVAL;
+    if (open && this.mobile) {
+      this.transition = null;
+      this.position = this.surface.read();
+    }
+  }
+
   setVisible(visible: boolean, now: number) {
     this.visible = visible;
     this.transition = null;
@@ -215,8 +225,8 @@ export class MenuCarouselController {
       return;
     }
 
-    if (this.reducedMotion || this.keyboardFocus || now < this.pauseUntil) {
-      if (this.keyboardFocus) this.nextAdvance = now + MOBILE_INTERVAL;
+    if (this.reducedMotion || this.keyboardFocus || (this.mobile && this.descriptionOpen) || now < this.pauseUntil) {
+      if (this.keyboardFocus || (this.mobile && this.descriptionOpen)) this.nextAdvance = now + MOBILE_INTERVAL;
       return;
     }
 

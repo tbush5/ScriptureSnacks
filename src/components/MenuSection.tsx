@@ -4,7 +4,7 @@ import { menuItems } from '../data/menuItems';
 import { useMenuCarousel } from '../hooks/useMenuCarousel';
 
 export default function MenuSection() {
-  const { track, centeredItem, controlsVisible, carouselProps, dotsProps, scroll, scrollToItem } = useMenuCarousel(menuItems.length);
+  const { track, centeredItem, controlsVisible, flippedCards, setCardFlipped, carouselProps, dotsProps, scroll, scrollToItem } = useMenuCarousel(menuItems.length);
 
   return (
     <section id="menu" aria-labelledby="menu-heading" className="scroll-mt-24 overflow-hidden bg-[#f6eee8] px-6 py-16 text-[#49352e] sm:py-20 lg:px-8">
@@ -16,7 +16,10 @@ export default function MenuSection() {
       </div>
       <div className="menu-carousel relative mx-auto max-w-7xl" {...carouselProps}>
         <ul id="menu-cards" ref={track} aria-label="Baked goods, repeating carousel" className="menu-track flex gap-6 overflow-x-auto pb-6 pt-2">
-          {[0, 1, 2].flatMap(copy => menuItems.map(item => <MenuCard key={`${copy}-${item.name}`} {...item} />))}
+          {[0, 1, 2].flatMap(copy => menuItems.map((item, index) => {
+            const cardIndex = copy * menuItems.length + index;
+            return <MenuCard key={`${copy}-${item.name}`} {...item} flipped={flippedCards.has(cardIndex)} onFlipChange={flipped => setCardFlipped(cardIndex, flipped)} />;
+          }))}
         </ul>
         <button type="button" aria-label="Scroll menu left" aria-controls="menu-cards" onClick={() => scroll(-1)} className="absolute bottom-6 left-0 top-2 z-10 hidden w-[10%] cursor-pointer items-center justify-center bg-gradient-to-l from-transparent to-[#f6eee8]/95 text-[#82558a] opacity-0 transition-opacity duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a] motion-reduce:transition-none md:flex">
           <ArrowLeft size={24} aria-hidden="true" className="pointer-events-none" />

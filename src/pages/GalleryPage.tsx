@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { galleryImages } from '../data/galleryImages';
 
 type GallerySlot = (typeof galleryImages)[number] | null;
@@ -13,10 +14,35 @@ const columns = [0, 1, 2].map(column => {
 });
 
 export const GalleryPage = () => {
+  const gallery = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = gallery.current;
+    if (!element) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotion = () => {
+      if (reducedMotion.matches) delete element.dataset.galleryFades;
+      else element.dataset.galleryFades = '';
+    };
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        (entry.target as HTMLElement).dataset.visible = String(entry.isIntersecting && entry.intersectionRatio >= 0.1);
+      }
+    }, { rootMargin: '-88px 0px -32px 0px', threshold: [0, 0.1] });
+    for (const photo of element.querySelectorAll('.gallery-photo')) observer.observe(photo);
+    updateMotion();
+    reducedMotion.addEventListener('change', updateMotion);
+    return () => {
+      observer.disconnect();
+      reducedMotion.removeEventListener('change', updateMotion);
+      delete element.dataset.galleryFades;
+    };
+  }, []);
+
   return (
     <main aria-label="Gallery" className="min-h-[85vh] overflow-hidden bg-[#fffaf4] px-4 py-8 text-[#49352e] sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="mx-auto grid max-w-4xl grid-cols-3 items-start gap-3 sm:gap-6 lg:gap-8">
+        <div ref={gallery} className="mx-auto grid max-w-4xl grid-cols-3 items-start gap-3 sm:gap-6 lg:gap-8">
           {columns.map((photos, column) => (
             <ul
               key={column}
@@ -26,7 +52,7 @@ export const GalleryPage = () => {
               {photos.map((photo, index) => {
                 if (!photo) return <li key={`empty-${index}`} aria-hidden="true" className="aspect-[3/4]" />;
                 return (
-                  <li key={photo.src} className="aspect-[3/4] overflow-hidden rounded-xl shadow-sm sm:rounded-2xl">
+                  <li key={photo.src} className="gallery-photo aspect-[3/4] overflow-hidden rounded-xl shadow-sm sm:rounded-2xl">
                     <img
                       src={photo.src}
                       alt={photo.alt}
