@@ -12,7 +12,7 @@ export const menuItems: Omit<MenuCardProps, 'color'>[] = [
   {
     name: 'Cosmic Collagen Bites',
     image: '/img/cosmic-collagen-bites.webp',
-    description: 'These are collagen protein balls with an added childhood twist. They are super fudgey like a cosmic brownie, but they have about 9 grams of protein in each, collagen, and clean ingredients! .',
+    description: 'These are collagen protein balls with an added childhood twist. They are super fudgey like a cosmic brownie, but they have about 9 grams of protein in each, collagen, and clean ingredients!',
     price: '4 for $10',
   },
   {
@@ -24,14 +24,14 @@ export const menuItems: Omit<MenuCardProps, 'color'>[] = [
   {
     name: 'Apple Fritter Cookies',
     image: '/img/apple-fritter-cookie.webp',
-    description: 'This is apple fritter inspired cookie. These are great for apple and cookie lovers. Fresh apples and cinnamon are baked into each, topped with a sugary glaze. ',
+    description: 'This is an apple fritter inspired cookie. These are great for apple and cookie lovers. Fresh apples and cinnamon are baked into each, topped with a sugary glaze. ',
     price: '8 for $18',
   },
   {
     name: 'Apple Pie',
     image: '/img/apple-pie-menu-gallery.webp',
     description: 'A comforting apple pie made to share something sweet with loved ones. It is loaded with apples, cinnamon, sugar, and just a touch of lemon all inside a flaky crust.',
-    price: '$32 for a 9in pie',
+    price: '$32 for a 9-inch pie',
   },
   {
     name: 'Pumpkin Bread',

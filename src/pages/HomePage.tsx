@@ -44,7 +44,7 @@ export const HomePage = () => {
               fetchPriority="high"
             />
             <figcaption className="absolute -bottom-5 -left-5 max-w-[calc(100%-0.5rem)] rounded-2xl bg-green-sea py-4 pl-6 pr-3 font-serif text-xl text-[#49352e] shadow-sm sm:-left-9">
-              Baked fresh for you!
+              Baked fresh for you with clean ingredients!
             </figcaption>
           </figure>
 
@@ -54,7 +54,7 @@ export const HomePage = () => {
               <p>
                 Hello, I am Katie, and I started Scripture Snacks in a daydream. No, actually!
                 I was on a plane in the sky while daydreaming about baking. I dreamt of a bakery
-                where I worked to serve the Lord our God and serve his people. In this day of age eveyone seems busy,
+                where I worked to serve the Lord our God and serve his people. In this day and age, everyone seems busy,
                 so please sit back and take a snack.
               </p>
             </div>
