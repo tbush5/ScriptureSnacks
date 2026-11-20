@@ -1,7 +1,8 @@
 import { Heart, Mail } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-import ScriptureSnacksLogo from '../assets/ScriptureSnacksLogo.svg';
+import ScriptureSnacksLogo from '../assets/scripture-snacks-logo-112.webp';
+import ScriptureSnacksLogoLarge from '../assets/scripture-snacks-logo-168.webp';
 
 export default function Footer() {
   const linkClass = 'rounded-full text-sm text-[#6d5950] transition-colors hover:text-[#82558a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#82558a]';
@@ -12,7 +13,7 @@ export default function Footer() {
         <div className="grid items-center gap-8 text-center md:grid-cols-3 md:text-left">
           <div>
             <Link to="/" state={{ scrollTo: 'home' }} className="inline-flex items-center gap-1.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#82558a]">
-              <img src={ScriptureSnacksLogo} alt="" width={56} height={56} className="h-14 w-14 object-contain" />
+              <img src={ScriptureSnacksLogo} srcSet={`${ScriptureSnacksLogo} 2x, ${ScriptureSnacksLogoLarge} 3x`} alt="" width={56} height={56} className="h-14 w-14 object-contain" />
               <span>
                 <span className="block font-serif text-2xl leading-none">Scripture</span>
                 <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.25em] text-[#82558a]">Snacks</span>

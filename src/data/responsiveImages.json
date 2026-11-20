@@ -1,0 +1,420 @@
+{
+  "/img/apple-fritter-cookie.webp": [
+    {
+      "src": "/img/responsive/apple-fritter-cookie-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/apple-fritter-cookie-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/apple-fritter-cookie-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/apple-fritter-cookie-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/apple-fritter-cookie.webp",
+      "width": 960
+    }
+  ],
+  "/img/apple-pie-gallery.webp": [
+    {
+      "src": "/img/responsive/apple-pie-gallery-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/apple-pie-gallery-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/apple-pie-gallery-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/apple-pie-gallery-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/apple-pie-gallery.webp",
+      "width": 960
+    }
+  ],
+  "/img/apple-pie-menu-gallery.webp": [
+    {
+      "src": "/img/responsive/apple-pie-menu-gallery-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/apple-pie-menu-gallery-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/apple-pie-menu-gallery-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/apple-pie-menu-gallery-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/apple-pie-menu-gallery.webp",
+      "width": 960
+    }
+  ],
+  "/img/banana-bread.webp": [
+    {
+      "src": "/img/responsive/banana-bread-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/banana-bread-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/banana-bread-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/banana-bread-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/banana-bread.webp",
+      "width": 960
+    }
+  ],
+  "/img/challah-bread.webp": [
+    {
+      "src": "/img/responsive/challah-bread-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/challah-bread-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/challah-bread-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/challah-bread-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/challah-bread.webp",
+      "width": 960
+    }
+  ],
+  "/img/chocolate-chip-cookies.webp": [
+    {
+      "src": "/img/responsive/chocolate-chip-cookies-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/chocolate-chip-cookies-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/chocolate-chip-cookies-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/chocolate-chip-cookies-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/chocolate-chip-cookies.webp",
+      "width": 960
+    }
+  ],
+  "/img/cinnamon-rolls.webp": [
+    {
+      "src": "/img/responsive/cinnamon-rolls-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/cinnamon-rolls-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/cinnamon-rolls-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/cinnamon-rolls-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/cinnamon-rolls.webp",
+      "width": 960
+    }
+  ],
+  "/img/cosmic-collagen-bites.webp": [
+    {
+      "src": "/img/responsive/cosmic-collagen-bites-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/cosmic-collagen-bites-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/cosmic-collagen-bites-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/cosmic-collagen-bites-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/cosmic-collagen-bites.webp",
+      "width": 960
+    }
+  ],
+  "/img/fall-collage-gallery.webp": [
+    {
+      "src": "/img/responsive/fall-collage-gallery-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/fall-collage-gallery-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/fall-collage-gallery-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/fall-collage-gallery-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/fall-collage-gallery.webp",
+      "width": 1200
+    }
+  ],
+  "/img/kolachki.webp": [
+    {
+      "src": "/img/responsive/kolachki-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/kolachki-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/kolachki-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/kolachki-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/kolachki.webp",
+      "width": 960
+    }
+  ],
+  "/img/packaged-cookies.webp": [
+    {
+      "src": "/img/responsive/packaged-cookies-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/packaged-cookies-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/packaged-cookies-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/packaged-cookies-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/packaged-cookies.webp",
+      "width": 960
+    }
+  ],
+  "/img/packaged-web.webp": [
+    {
+      "src": "/img/responsive/packaged-web-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/packaged-web-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/packaged-web-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/packaged-web-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/packaged-web.webp",
+      "width": 960
+    }
+  ],
+  "/img/pumpkin-bread.webp": [
+    {
+      "src": "/img/responsive/pumpkin-bread-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/pumpkin-bread-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/pumpkin-bread-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/pumpkin-bread-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/pumpkin-bread.webp",
+      "width": 960
+    }
+  ],
+  "/img/pumpkin-muffin-gallery.webp": [
+    {
+      "src": "/img/responsive/pumpkin-muffin-gallery-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-gallery-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-gallery-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-gallery-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/pumpkin-muffin-gallery.webp",
+      "width": 960
+    }
+  ],
+  "/img/pumpkin-muffin-menu.webp": [
+    {
+      "src": "/img/responsive/pumpkin-muffin-menu-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-menu-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-menu-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/pumpkin-muffin-menu-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/pumpkin-muffin-menu.webp",
+      "width": 960
+    }
+  ],
+  "/img/ricottak-cake.webp": [
+    {
+      "src": "/img/responsive/ricottak-cake-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/ricottak-cake-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/ricottak-cake-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/ricottak-cake-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/ricottak-cake.webp",
+      "width": 960
+    }
+  ],
+  "/img/snowman-sugar-cookie.webp": [
+    {
+      "src": "/img/responsive/snowman-sugar-cookie-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/snowman-sugar-cookie-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/snowman-sugar-cookie-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/snowman-sugar-cookie-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/snowman-sugar-cookie.webp",
+      "width": 960
+    }
+  ],
+  "/img/spider-cake-gallery.webp": [
+    {
+      "src": "/img/responsive/spider-cake-gallery-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/spider-cake-gallery-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/spider-cake-gallery-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/spider-cake-gallery-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/spider-cake-gallery.webp",
+      "width": 960
+    }
+  ],
+  "/img/strawberry-milkshake-cookie.webp": [
+    {
+      "src": "/img/responsive/strawberry-milkshake-cookie-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/strawberry-milkshake-cookie-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/strawberry-milkshake-cookie-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/strawberry-milkshake-cookie-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/strawberry-milkshake-cookie.webp",
+      "width": 960
+    }
+  ]
+}

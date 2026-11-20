@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { galleryImages } from '../data/galleryImages';
+import { galleryPhotoSizes, photoSrcSet } from '../lib/responsiveImages';
 
 type GallerySlot = (typeof galleryImages)[number] | null;
 
@@ -55,6 +56,8 @@ export const GalleryPage = () => {
                   <li key={photo.src} className="gallery-photo aspect-[3/4] overflow-hidden rounded-xl shadow-sm sm:rounded-2xl">
                     <img
                       src={photo.src}
+                      srcSet={photoSrcSet(photo.src)}
+                      sizes={galleryPhotoSizes}
                       alt={photo.alt}
                       width={photo.width}
                       height={photo.height}

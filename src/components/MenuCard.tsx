@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { RotateCcw } from 'lucide-react';
+import { menuPhotoSizes, photoSrcSet } from '../lib/responsiveImages';
 
 export interface MenuCardProps {
   name: string;
@@ -38,10 +39,13 @@ export default function MenuCard({ name, image, description, price, color = '#e4
           <span className="menu-card-face overflow-hidden bg-white" aria-hidden="true">
             <img
               src={image}
+              srcSet={photoSrcSet(image)}
+              sizes={menuPhotoSizes}
               alt=""
               width={700}
               height={460}
               loading="lazy"
+              decoding="async"
               className="h-3/4 w-full object-cover"
             />
             <span className="flex h-1/4 items-center py-4 pl-6 pr-10" style={{ backgroundColor: color }}>

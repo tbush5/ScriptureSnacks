@@ -47,7 +47,27 @@ export function useMenuCarousel(itemCount: number) {
     };
     const onScroll = () => instance.onScroll(performance.now());
     const onScrollEnd = () => instance.onScrollEnd(performance.now());
-    const onVisibility = () => instance.setVisible(!document.hidden, performance.now());
+    let frame = 0;
+    let inViewport = false;
+    let running = false;
+    const animate = (now: number) => {
+      instance.tick(now);
+      frame = requestAnimationFrame(animate);
+    };
+    const onVisibility = () => {
+      const shouldRun = inViewport && !document.hidden;
+      if (running === shouldRun) return;
+      running = shouldRun;
+      instance.setVisible(running, performance.now());
+      if (running) frame = requestAnimationFrame(animate);
+      else cancelAnimationFrame(frame);
+    };
+    // Stop scheduling animation frames when the menu cannot be seen.
+    instance.setVisible(false, performance.now());
+    const viewport = new IntersectionObserver(entries => {
+      inViewport = entries.some(entry => entry.isIntersecting);
+      onVisibility();
+    });
     const resize = new ResizeObserver(measure);
     const visibility = new IntersectionObserver(entries => {
       const openCard = [...flippedCardsRef.current][0];
@@ -59,6 +79,7 @@ export function useMenuCarousel(itemCount: number) {
     measure();
     onVisibility();
     resize.observe(element);
+    viewport.observe(element);
     for (const card of element.children) visibility.observe(card);
     mobile.addEventListener('change', measure);
     reducedMotion.addEventListener('change', measure);
@@ -66,15 +87,10 @@ export function useMenuCarousel(itemCount: number) {
     element.addEventListener('scrollend', onScrollEnd);
     document.addEventListener('visibilitychange', onVisibility);
 
-    let frame = 0;
-    const animate = (now: number) => {
-      instance.tick(now);
-      frame = requestAnimationFrame(animate);
-    };
-    frame = requestAnimationFrame(animate);
     return () => {
       cancelAnimationFrame(frame);
       resize.disconnect();
+      viewport.disconnect();
       visibility.disconnect();
       mobile.removeEventListener('change', measure);
       reducedMotion.removeEventListener('change', measure);

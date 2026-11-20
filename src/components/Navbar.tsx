@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
-import ScriptureSnacksLogo from '../assets/ScriptureSnacksLogo.svg';
+import ScriptureSnacksLogo from '../assets/scripture-snacks-logo-112.webp';
+import ScriptureSnacksLogoLarge from '../assets/scripture-snacks-logo-168.webp';
 import { scrollToSectionAfterLayout } from '../lib/scrollToSection';
 
 type SectionId = 'home' | 'menu' | 'order';
@@ -79,7 +80,10 @@ export const Navbar = () => {
           >
             <img
               src={ScriptureSnacksLogo}
+              srcSet={`${ScriptureSnacksLogo} 2x, ${ScriptureSnacksLogoLarge} 3x`}
               alt=""
+              width={56}
+              height={56}
               className="w-14 h-14 object-contain group-hover:scale-105 transition-transform duration-200"
             />
             <div>

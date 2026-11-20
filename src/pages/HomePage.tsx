@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import MenuSection from '../components/MenuSection';
 import { scrollToSectionAfterLayout } from '../lib/scrollToSection';
+import { homePhotoSizes, photoSrcSet } from '../lib/responsiveImages';
 
 interface LocationState {
   scrollTo?: string;
@@ -37,6 +38,8 @@ export const HomePage = () => {
           <figure className="relative order-2 w-[75%] max-w-xs justify-self-center md:w-full md:justify-self-end">
             <img
               src="/img/pumpkin-muffin-gallery.webp"
+              srcSet={photoSrcSet('/img/pumpkin-muffin-gallery.webp')}
+              sizes={homePhotoSizes}
               alt="Pumpkin muffins on a wooden platter beside a sunflower"
               width={960}
               height={1280}

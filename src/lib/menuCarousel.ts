@@ -33,6 +33,7 @@ export class MenuCarouselController {
   private mobile = false;
   private reducedMotion = false;
   private visible = true;
+  private hiddenAt = 0;
   private keyboardFocus = false;
   private descriptionOpen = false;
   private direction = 1;
@@ -163,9 +164,13 @@ export class MenuCarouselController {
   }
 
   setVisible(visible: boolean, now: number) {
+    if (this.visible === visible) return;
     this.visible = visible;
-    this.transition = null;
-    this.position = this.surface.read();
+    if (!visible) this.hiddenAt = now;
+    else if (this.transition) {
+      // Resume an interrupted slide at the same point, without catching up.
+      this.transition.startedAt += now - this.hiddenAt;
+    }
     this.lastFrame = null;
     this.nextAdvance = now + MOBILE_INTERVAL;
   }
