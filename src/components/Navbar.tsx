@@ -4,12 +4,42 @@ import { Menu, X, ShoppingBag } from 'lucide-react';
 import ScriptureSnacksLogo from '../assets/ScriptureSnacksLogo.svg';
 
 type SectionId = 'home' | 'menu' | 'order';
+const sectionIds: SectionId[] = ['home', 'menu', 'order'];
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<SectionId>('home');
   const location = useLocation();
   const navigate = useNavigate();
+  const activeItem = location.pathname === '/gallery' ? 'gallery' : activeSection;
+
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+    let frame = 0;
+    const updateActiveSection = () => {
+      // Track the section in the upper part of the reading area below the bar.
+      const readingLine = Math.max(120, Math.min(window.innerHeight * 0.4, 320));
+      let current: SectionId = 'home';
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= readingLine) current = id;
+      }
+      setActiveSection(current);
+    };
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateActiveSection);
+    };
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,25 +97,28 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center space-x-2">
             <button
               onClick={() => scrollToSection('home')}
-              className="px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
+              aria-current={activeItem === 'home' ? 'location' : undefined}
+              className="primary-nav-item px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection('menu')}
-              className="px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
+              aria-current={activeItem === 'menu' ? 'location' : undefined}
+              className="primary-nav-item px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
             >
               Menu
             </button>
             <button
               onClick={() => scrollToSection('order')}
-              className="px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
+              aria-current={activeItem === 'order' ? 'location' : undefined}
+              className="primary-nav-item px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
             >
               Order
             </button>
             <Link
-              to="/gallery"
-              className="px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
+              to="/gallery" aria-current={activeItem === 'gallery' ? 'page' : undefined}
+              className="primary-nav-item px-4 py-2 rounded-full text-sm font-medium text-[#6d5950] hover:text-[#82558a] hover:bg-[#e4c6eb]/40 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a]"
             >
               Gallery
             </Link>
@@ -120,26 +153,29 @@ export const Navbar = () => {
         <div id="mobile-navigation" className="md:hidden border-t border-[#e9ddd4] mt-4 pt-3 pb-2 space-y-2">
           <button
             onClick={() => scrollToSection('home')}
-            className="w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
+            aria-current={activeItem === 'home' ? 'location' : undefined}
+            className="primary-nav-item w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection('menu')}
-            className="w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
+            aria-current={activeItem === 'menu' ? 'location' : undefined}
+            className="primary-nav-item w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
             Menu
           </button>
           <button
             onClick={() => scrollToSection('order')}
-            className="w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
+            aria-current={activeItem === 'order' ? 'location' : undefined}
+            className="primary-nav-item w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
             Order Online
           </button>
           <Link
-            to="/gallery"
+            to="/gallery" aria-current={activeItem === 'gallery' ? 'page' : undefined}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
+            className="primary-nav-item block w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
             Gallery
           </Link>

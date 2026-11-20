@@ -38,7 +38,7 @@ export const HomePage = () => {
           </header>
           <figure className="relative order-2 w-full max-w-lg justify-self-start md:justify-self-end">
             <img
-              src="/food/fall-collage-gallery.jpg"
+              src="/img/fall-collage-gallery.jpg"
               alt="A fall collage of Scripture Snacks baked goods"
               width={1200}
               height={1500}

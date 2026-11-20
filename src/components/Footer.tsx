@@ -1,4 +1,4 @@
-import { Heart } from 'lucide-react';
+import { Heart, Mail } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import ScriptureSnacksLogo from '../assets/ScriptureSnacksLogo.svg';
@@ -20,6 +20,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 font-serif text-lg text-[#6d5950]">A little faith. A little sweetness.</p>
           </div>
+          <div className="flex min-w-0 flex-col items-center gap-1">
           <a
             href="https://www.instagram.com/scripturesnacksofvb/"
             target="_blank"
@@ -30,6 +31,14 @@ export default function Footer() {
             <FaInstagram size={20} aria-hidden="true" />
             <span>@scripturesnacksofvb</span>
           </a>
+          <a
+            href="mailto:scripturesnacksofvb@gmail.com"
+            className="flex max-w-full items-center justify-center gap-2 rounded-full px-2 py-2 text-sm text-[#82558a] transition-colors hover:bg-[#edb5c6]/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#82558a]"
+          >
+            <Mail size={18} aria-hidden="true" className="shrink-0" />
+            <span className="break-all">scripturesnacksofvb@gmail.com</span>
+          </a>
+          </div>
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-7 gap-y-4 md:justify-end">
             <Link to="/" state={{ scrollTo: 'home' }} className={linkClass}>Home</Link>
             <Link to="/" state={{ scrollTo: 'menu' }} className={linkClass}>Menu</Link>
