@@ -78,8 +78,26 @@ export const HomePage = () => {
         className="scroll-mt-24 min-h-[70vh] flex items-center justify-center bg-[#fffaf4] px-6 py-16 text-[#49352e] sm:py-20 lg:px-8"
       >
         <div className="mx-auto w-full max-w-7xl text-center">
-          <h2 id="order-heading" className="font-serif text-4xl sm:text-5xl">Order Section</h2>
+          <h2 id="order-heading" className="font-serif text-4xl sm:text-5xl">Order</h2>
           <div aria-hidden="true" className="mx-auto mt-5 h-1 w-16 rounded-full bg-light-purple" />
+          <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-[#6d5950] sm:text-lg">
+            Currently, for all online orders, contact me on Instagram at{' '}
+            <a
+              href="https://www.instagram.com/scripturesnacksofvb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[#82558a] hover:text-[#6b4472] focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              @scripturesnacksofvb
+            </a>{' '}
+            or email me at{' '}
+            <a
+              href="mailto:scripturesnacksofvb@gmail.com"
+              className="break-words font-medium text-[#82558a] hover:text-[#6b4472] focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              scripturesnacksofvb@gmail.com
+            </a>
+          </p>
         </div>
       </section>
     </main>
