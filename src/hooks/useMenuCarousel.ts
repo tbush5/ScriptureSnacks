@@ -1,0 +1,118 @@
+import { useEffect, useRef, useState } from 'react';
+import type { FocusEvent, MouseEvent, PointerEvent } from 'react';
+import { MenuCarouselController } from '../lib/menuCarousel';
+
+export function useMenuCarousel(itemCount: number) {
+  const track = useRef<HTMLUListElement>(null);
+  const controller = useRef<MenuCarouselController | null>(null);
+  const [centeredItem, setCenteredItem] = useState(0);
+  const [controlsVisible, setControlsVisible] = useState(false);
+  const controlsTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tapStart = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    const element = track.current;
+    if (!element || !itemCount) return;
+    const mobile = window.matchMedia('(max-width: 767px)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const instance = new MenuCarouselController(itemCount, {
+      read: () => element.scrollLeft,
+      write: position => { element.scrollLeft = position; },
+      onCenteredItem: setCenteredItem,
+    });
+    controller.current = instance;
+
+    const measure = () => {
+      const first = element.children[0] as HTMLElement;
+      const nextCopy = element.children[itemCount] as HTMLElement;
+      const loopWidth = nextCopy.offsetLeft - first.offsetLeft;
+      instance.configure({
+        viewport: element.clientWidth,
+        firstCenter: first.offsetLeft + first.offsetWidth / 2,
+        step: loopWidth / itemCount,
+        loopWidth,
+      }, mobile.matches, reducedMotion.matches, performance.now());
+    };
+    const onScroll = () => instance.onScroll(performance.now());
+    const onScrollEnd = () => instance.onScrollEnd(performance.now());
+    const onVisibility = () => instance.setVisible(!document.hidden, performance.now());
+    const resize = new ResizeObserver(measure);
+    measure();
+    onVisibility();
+    resize.observe(element);
+    mobile.addEventListener('change', measure);
+    reducedMotion.addEventListener('change', measure);
+    element.addEventListener('scroll', onScroll, { passive: true });
+    element.addEventListener('scrollend', onScrollEnd);
+    document.addEventListener('visibilitychange', onVisibility);
+
+    let frame = 0;
+    const animate = (now: number) => {
+      instance.tick(now);
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => {
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      mobile.removeEventListener('change', measure);
+      reducedMotion.removeEventListener('change', measure);
+      element.removeEventListener('scroll', onScroll);
+      element.removeEventListener('scrollend', onScrollEnd);
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (controlsTimeout.current) clearTimeout(controlsTimeout.current);
+      controller.current = null;
+    };
+  }, [itemCount]);
+
+  const focusProps = {
+    onFocus: (event: FocusEvent<HTMLElement>) => {
+      controller.current?.setKeyboardFocus(event.target.matches(':focus-visible'), performance.now());
+    },
+    onBlur: (event: FocusEvent<HTMLElement>) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) controller.current?.setKeyboardFocus(false, performance.now());
+    },
+    onKeyDown: () => controller.current?.setKeyboardFocus(true, performance.now()),
+  };
+
+  const carouselProps = {
+    ...focusProps,
+    onMouseMove: (event: MouseEvent<HTMLElement>) => {
+      const bounds = event.currentTarget.getBoundingClientRect();
+      controller.current?.setHover((event.clientX - bounds.left) / bounds.width);
+    },
+    onMouseLeave: () => controller.current?.setHover(null),
+    onPointerDown: (event: PointerEvent<HTMLElement>) => {
+      controller.current?.setKeyboardFocus(false, performance.now());
+      if (controller.current?.isMobile) tapStart.current = { x: event.clientX, y: event.clientY };
+    },
+    onPointerUp: (event: PointerEvent<HTMLElement>) => {
+      const start = tapStart.current;
+      tapStart.current = null;
+      if (!start || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
+      setControlsVisible(true);
+      if (controlsTimeout.current) clearTimeout(controlsTimeout.current);
+      controlsTimeout.current = setTimeout(() => setControlsVisible(false), 3000);
+    },
+    onPointerCancel: () => { tapStart.current = null; },
+    onTouchStart: () => controller.current?.beginTouch(performance.now()),
+    onTouchEnd: () => controller.current?.endTouch(performance.now()),
+    onTouchCancel: () => controller.current?.endTouch(performance.now()),
+    onWheel: () => controller.current?.beginNativeScroll(performance.now()),
+  };
+
+  return {
+    track,
+    centeredItem,
+    controlsVisible,
+    carouselProps,
+    dotsProps: {
+      ...focusProps,
+      onPointerDown: () => controller.current?.setKeyboardFocus(false, performance.now()),
+      onMouseEnter: () => controller.current?.setHover(0.5),
+      onMouseLeave: () => controller.current?.setHover(null),
+    },
+    scroll: (direction: -1 | 1) => controller.current?.move(direction, performance.now()),
+    scrollToItem: (index: number) => controller.current?.goToItem(index, performance.now()),
+  };
+}

@@ -12,7 +12,7 @@ export default function MenuCard({ name, image, description, color = '#e4c6eb' }
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <li className="w-[min(78vw,19rem)] shrink-0 snap-start">
+    <li className="w-[min(78vw,19rem)] shrink-0">
       <button
         type="button"
         className="menu-card block h-[25rem] w-full cursor-pointer rounded-3xl text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#82558a]"
