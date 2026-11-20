@@ -40,7 +40,7 @@ export const GalleryPage = () => {
   }, []);
 
   return (
-    <main aria-label="Gallery" className="min-h-[85vh] overflow-hidden bg-[#fffaf4] px-4 py-8 text-[#49352e] sm:px-6 lg:px-8">
+    <main id="gallery" aria-label="Gallery" className="min-h-[85vh] overflow-hidden bg-[#fffaf4] px-4 py-8 text-[#49352e] sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <div ref={gallery} className="mx-auto grid max-w-4xl grid-cols-3 items-start gap-3 sm:gap-6 lg:gap-8">
           {columns.map((photos, column) => (

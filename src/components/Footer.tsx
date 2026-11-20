@@ -18,7 +18,6 @@ export default function Footer() {
                 <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.25em] text-[#82558a]">Snacks</span>
               </span>
             </Link>
-            <p className="mt-4 font-serif text-lg text-[#6d5950]">A little faith. A little sweetness.</p>
           </div>
           <div className="flex min-w-0 flex-col items-center gap-1">
           <a

@@ -3,14 +3,25 @@ import MenuCard from './MenuCard';
 import { menuItems } from '../data/menuItems';
 import { useMenuCarousel } from '../hooks/useMenuCarousel';
 
+const cardPalette = ['#e4c6eb', '#a2d9ce', '#ffb8bf', '#f7dc6f'];
+
+function getCardColor(index: number, count: number) {
+  const color = cardPalette[index % cardPalette.length];
+  // Keep the loop seam as varied as the rest of the list.
+  if (count > 1 && index === count - 1 && color === cardPalette[0]) {
+    const previous = cardPalette[(index - 1) % cardPalette.length];
+    return cardPalette.find(candidate => candidate !== previous && candidate !== cardPalette[0])!;
+  }
+  return color;
+}
+
 export default function MenuSection() {
   const { track, centeredItem, controlsVisible, flippedCards, setCardFlipped, carouselProps, dotsProps, scroll, scrollToItem } = useMenuCarousel(menuItems.length);
 
   return (
-    <section id="menu" aria-labelledby="menu-heading" className="scroll-mt-24 overflow-hidden bg-[#f6eee8] px-6 py-16 text-[#49352e] sm:py-20 lg:px-8">
+    <section id="menu" aria-labelledby="menu-heading" className="scroll-mt-24 overflow-hidden bg-[#f6eee8] px-6 py-12 text-[#49352e] sm:py-16 lg:px-8">
       <div className="mx-auto mb-8 max-w-7xl">
         <div>
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#82558a]">Something sweet for you</p>
           <h2 id="menu-heading" className="font-serif text-4xl sm:text-5xl">My Menu</h2>
         </div>
       </div>
@@ -18,7 +29,7 @@ export default function MenuSection() {
         <ul id="menu-cards" ref={track} aria-label="Baked goods, repeating carousel" className="menu-track flex gap-6 overflow-x-auto pb-6 pt-2">
           {[0, 1, 2].flatMap(copy => menuItems.map((item, index) => {
             const cardIndex = copy * menuItems.length + index;
-            return <MenuCard key={`${copy}-${item.name}`} {...item} flipped={flippedCards.has(cardIndex)} onFlipChange={flipped => setCardFlipped(cardIndex, flipped)} />;
+            return <MenuCard key={`${copy}-${item.name}`} {...item} color={getCardColor(index, menuItems.length)} flipped={flippedCards.has(cardIndex)} onFlipChange={flipped => setCardFlipped(cardIndex, flipped)} />;
           }))}
         </ul>
         <button type="button" aria-label="Scroll menu left" aria-controls="menu-cards" onClick={() => scroll(-1)} className="absolute bottom-6 left-0 top-2 z-10 hidden w-[10%] cursor-pointer items-center justify-center bg-gradient-to-l from-transparent to-[#f6eee8]/95 text-[#82558a] opacity-0 transition-opacity duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82558a] motion-reduce:transition-none md:flex">

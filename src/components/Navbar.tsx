@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import ScriptureSnacksLogo from '../assets/ScriptureSnacksLogo.svg';
+import { scrollToSectionAfterLayout } from '../lib/scrollToSection';
 
 type SectionId = 'home' | 'menu' | 'order';
 const sectionIds: SectionId[] = ['home', 'menu', 'order'];
@@ -55,18 +56,16 @@ export const Navbar = () => {
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToSectionAfterLayout(sectionId);
     }
   };
 
   return (
     <nav
+      data-site-header
       className={`sticky top-0 z-50 border-b border-[#edb5c6] px-6 text-[#49352e] transition-all duration-300 lg:px-8 ${
         isScrolled
-          ? 'bg-[#f8d7e3]/95 backdrop-blur-md shadow-sm py-3'
+          ? 'bg-[#f8d7e3]/95 backdrop-blur-md shadow-sm py-4 md:py-3'
           : 'bg-[#f8d7e3] py-4'
       }`}
     >
@@ -170,11 +169,14 @@ export const Navbar = () => {
             aria-current={activeItem === 'order' ? 'location' : undefined}
             className="primary-nav-item w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
-            Order Online
+            Order
           </button>
           <Link
             to="/gallery" aria-current={activeItem === 'gallery' ? 'page' : undefined}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              scrollToSectionAfterLayout('gallery');
+            }}
             className="primary-nav-item block w-full text-left px-4 py-3 rounded-xl text-[#6d5950] hover:bg-[#e4c6eb]/40 hover:text-[#82558a] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[#82558a]"
           >
             Gallery

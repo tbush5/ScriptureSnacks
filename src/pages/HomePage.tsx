@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import MenuSection from '../components/MenuSection';
+import { scrollToSectionAfterLayout } from '../lib/scrollToSection';
 
 interface LocationState {
   scrollTo?: string;
@@ -12,10 +13,7 @@ export const HomePage = () => {
   useEffect(() => {
     const state = location.state as LocationState | null;
     if (state?.scrollTo) {
-      const element = document.getElementById(state.scrollTo);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      return scrollToSectionAfterLayout(state.scrollTo);
     }
   }, [location]);
 
@@ -26,7 +24,7 @@ export const HomePage = () => {
         aria-labelledby="story-heading"
         className="scroll-mt-24 bg-[#fffaf4] px-6 pb-16 pt-6 text-[#49352e] sm:pb-20 sm:pt-8 lg:px-8"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-x-20">
+        <div className="mx-auto grid max-w-5xl items-center gap-x-8 gap-y-10 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
           <header className="text-center md:col-span-2">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#82558a]">
               Welcome to Scripture Snacks
@@ -36,17 +34,17 @@ export const HomePage = () => {
             </h1>
             <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-light-purple" />
           </header>
-          <figure className="relative order-2 w-full max-w-lg justify-self-start md:justify-self-end">
+          <figure className="relative order-2 w-[75%] max-w-xs justify-self-center md:w-full md:justify-self-end">
             <img
-              src="/img/fall-collage-gallery.webp"
-              alt="A fall collage of Scripture Snacks baked goods"
-              width={1200}
-              height={1500}
-              className="aspect-[4/5] w-full rounded-t-full rounded-b-3xl object-cover shadow-lg"
+              src="/img/pumpkin-muffin-gallery.webp"
+              alt="Pumpkin muffins on a wooden platter beside a sunflower"
+              width={960}
+              height={1280}
+              className="aspect-[4/5] w-full rounded-3xl object-cover object-top shadow-lg"
               fetchPriority="high"
             />
             <figcaption className="absolute -bottom-5 -left-5 max-w-[calc(100%-0.5rem)] rounded-2xl bg-green-sea py-4 pl-6 pr-3 font-serif text-xl text-[#49352e] shadow-sm sm:-left-9">
-              A little faith. A little sweetness.
+              Baked fresh for you!
             </figcaption>
           </figure>
 
@@ -62,6 +60,10 @@ export const HomePage = () => {
             </div>
             <a
               href="#menu"
+              onClick={event => {
+                event.preventDefault();
+                scrollToSectionAfterLayout('menu');
+              }}
               className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#82558a] px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6b4472] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#82558a]"
             >
               Explore the menu <span aria-hidden="true" className="ml-3">&rarr;</span>

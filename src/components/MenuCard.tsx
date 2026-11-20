@@ -42,12 +42,11 @@ export default function MenuCard({ name, image, description, price, color = '#e4
               width={700}
               height={460}
               loading="lazy"
-              className={`${priceLabel ? 'h-[65%]' : 'h-3/4'} w-full object-cover`}
+              className="h-3/4 w-full object-cover"
             />
-            <span className={`flex pl-6 pr-10 ${priceLabel ? 'h-[35%] items-start pt-4 pb-20' : 'h-1/4 items-center py-4'}`} style={{ backgroundColor: color }}>
+            <span className="flex h-1/4 items-center py-4 pl-6 pr-10" style={{ backgroundColor: color }}>
               <span className="font-serif text-2xl leading-tight">{name}</span>
             </span>
-            {priceText}
             <RotateCcw size={18} className="absolute bottom-3 right-4" />
           </span>
           <span className={`menu-card-face menu-card-back flex flex-col justify-between overflow-hidden p-7 ${priceLabel ? 'pb-24' : ''}`} style={{ backgroundColor: color }} aria-hidden="true">
