@@ -114,5 +114,17 @@ export const galleryImages = [
     "alt": "A fall collage of Scripture Snacks baked goods",
     "width": 1200,
     "height": 2133
+  },
+  {
+    "src": "/img/chick-peas.webp",
+    "alt": "Chick peas",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "src": "/img/granola-banana-chips.webp",
+    "alt": "Granola mix with banana chips",
+    "width": 960,
+    "height": 1280
   }
 ];

@@ -109,6 +109,28 @@
       "width": 960
     }
   ],
+  "/img/chick-peas.webp": [
+    {
+      "src": "/img/responsive/chick-peas-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/chick-peas-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/chick-peas-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/chick-peas-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/chick-peas.webp",
+      "width": 960
+    }
+  ],
   "/img/chocolate-chip-cookies.webp": [
     {
       "src": "/img/responsive/chocolate-chip-cookies-240.webp",
@@ -195,6 +217,28 @@
     {
       "src": "/img/fall-collage-gallery.webp",
       "width": 1200
+    }
+  ],
+  "/img/granola-banana-chips.webp": [
+    {
+      "src": "/img/responsive/granola-banana-chips-240.webp",
+      "width": 240
+    },
+    {
+      "src": "/img/responsive/granola-banana-chips-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/img/responsive/granola-banana-chips-480.webp",
+      "width": 480
+    },
+    {
+      "src": "/img/responsive/granola-banana-chips-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/img/granola-banana-chips.webp",
+      "width": 960
     }
   ],
   "/img/kolachki.webp": [

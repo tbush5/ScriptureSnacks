@@ -45,5 +45,17 @@ export const menuItems: Omit<MenuCardProps, 'color'>[] = [
     description: 'Similar to the pumpkin bread, these muffins are perfect for a morning breakfast. They have both pepitas and a streusel topping.',
     price: '1 dozen for $18',
   },
+  {
+    name: 'Chick Peas',
+    image: '/img/chick-peas.webp',
+    description: 'These chickpeas are roasted and seasoned in olive oil. There are two flavors. One is a spiced paprika blend and the other is salted.',
+    price: '4 oz Jar for $5',
+  },
+  {
+    name: 'Granola Mix',
+    image: '/img/granola-banana-chips.webp',
+    description: 'This gronala mix has assorted nuts, banana chips, chocolate chips, and toasted coconut. It comes in a a small bag for a quick snack.',
+    price: 'A bag for $3',
+  },
 ];
 
