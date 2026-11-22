@@ -46,7 +46,7 @@ export const menuItems: Omit<MenuCardProps, 'color'>[] = [
     price: '1 dozen for $18',
   },
   {
-    name: 'Chick Peas',
+    name: 'Chickpeas',
     image: '/img/chick-peas.webp',
     description: 'These chickpeas are roasted and seasoned in olive oil. There are two flavors. One is a spiced paprika blend and the other is salted.',
     price: '4 oz Jar for $5',
